@@ -9,7 +9,6 @@ import { styled } from '@mui/material/styles';
 import { Download } from '@mui/icons-material';
 
 
-
 // Custom styles for the form elements
 const PurpleButton = styled(Button)(({ theme }) => ({
   color: theme.palette.getContrastText(purple[500]),
@@ -41,7 +40,7 @@ const FeedbackForm = () => {
   const [userFriendly, setUserFriendly] = React.useState('');
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+
   // Handlers for the form inputs
   const handleNameChange = (event) => {
     setName(event.target.value);
@@ -79,7 +78,7 @@ const FeedbackForm = () => {
       
     };
     // Define the endpoint URL
-    const url = `${apiBaseUrl}/v1/feedback`;
+    const url = 'http://13.58.63.17:8080/api/v1/feedback';
   
     // Make a POST request with axios
     axios.post(url, feedbackdata)

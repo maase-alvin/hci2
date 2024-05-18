@@ -38,14 +38,14 @@ export default function CreateNewNotificationPage() {
       });
       const router = useRouter();
       const [loading, setLoading] = useState(false);
-      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+
       const handleSubmit = (event) => {
         // Prevent the default browser behavior
         event.preventDefault();
         setLoading(true);
       
         // Define the endpoint URL
-        const url = `${apiBaseUrl}/v1/notifications`;
+        const url = 'http://13.58.63.17:8080/api/v1/notifications';
       console.log(formData);
         // Make a POST request with axios
         axios.post(url, formData)

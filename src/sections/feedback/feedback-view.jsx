@@ -69,9 +69,8 @@ export default function FeedBackPage() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
       try {
-        const response = await axios.get(`${apiBaseUrl}/v1/feedback`);
+        const response = await axios.get('http://13.58.63.17:8080/api/v1/feedback');
         SetFeedback(response.data); 
         setLoading(false);
       } catch (err) {

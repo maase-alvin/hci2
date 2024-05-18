@@ -31,7 +31,6 @@ import { useAuth } from 'src/contexts/AuthProvider';
 export default function LoginView() {
   // const { setUserData } = useContext(UserDataContext);
   const { login } = useAuth();
-  const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
   const theme = useTheme();
 
@@ -60,7 +59,7 @@ export default function LoginView() {
     console.log(formData.email)
     console.log(formData.password)
     try {
-      const response = await fetch(`${apiBaseUrl}/v1/users`, {
+      const response = await fetch('http://13.58.63.17:8080/api/v1/users', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json', 
