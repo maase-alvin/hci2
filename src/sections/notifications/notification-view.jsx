@@ -35,6 +35,7 @@ import { emptyRows, applyFilter, getComparator } from '../user/utils';
 
 export default function NotificationPage() {
   const [page, setPage] = useState(0);
+  const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
   const [order, setOrder] = useState('asc');
 
@@ -70,7 +71,7 @@ export default function NotificationPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://13.58.63.17:8080/api/v1/notifications');
+        const response = await axios.get(`${apiBaseUrl}/v1/notifications`);
         setSetNotifications(response.data); 
         setLoading(false);
       } catch (err) {
@@ -101,7 +102,7 @@ export default function NotificationPage() {
         status: selectedAction,
       };
   
-      await axios.put(`http://13.58.63.17:8080/api/v1/notifications/${selectedNotificationId}`, updatedNotificationInfo);
+      await axios.put(`${apiBaseUrl}/v1/notifications/${selectedNotificationId}`, updatedNotificationInfo);
     
 
       toast.success(`Notofication ${selectedNotificationId} updated successfully`, {
@@ -158,7 +159,7 @@ export default function NotificationPage() {
   const handleDelete = async (event, notificationId) => {
     console.log('handleDelete is being called'); 
     try {      
-      const response = await axios.delete(`http://13.58.63.17:8080/api/v1/notifications/${notificationId}`);
+      const response = await axios.delete(`${apiBaseUrl}/v1/notifications/${notificationId}`);
      
       console.log(response.data);
       

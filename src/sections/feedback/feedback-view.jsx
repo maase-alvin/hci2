@@ -35,7 +35,7 @@ import { emptyRows, applyFilter, getComparator } from '../user/utils';
 
 export default function FeedBackPage() {
   const [page, setPage] = useState(0);
-
+  const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
   const [order, setOrder] = useState('asc');
 
   const [selected, setSelected] = useState([]);
@@ -70,7 +70,7 @@ export default function FeedBackPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://13.58.63.17:8080/api/v1/feedback');
+        const response = await axios.get(`${apiBaseUrl}/v1/feedback`);
         SetFeedback(response.data); 
         setLoading(false);
       } catch (err) {

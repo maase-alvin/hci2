@@ -27,12 +27,12 @@ import "slick-carousel/slick/slick-theme.css";
 
 export default function AppView() {
   const [notifications, setNotifications] = useState([]);
-
+  const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
   
 useEffect(() => {
   const fetchData = async () => {
     try {
-      const response = await axios.get('http://13.58.63.17:8080/api/v1/notifications');
+      const response = await axios.get(`${apiBaseUrl}/v1/notifications`);
       setNotifications(response.data); 
     
     } catch (error) {

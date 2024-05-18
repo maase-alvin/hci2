@@ -35,7 +35,7 @@ export default function CreateNewUserPage() {
        
       });
       const router = useRouter();
-     
+      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
       const [loading, setLoading] = useState(false);
 
@@ -44,7 +44,7 @@ export default function CreateNewUserPage() {
         event.preventDefault();
         setLoading(true);      
         
-        const url = 'http://13.58.63.17:8080/api/v1/users';      
+        const url = `${apiBaseUrl}/v1/users`;      
         
         axios.post(url, formData)
           .then(response => {
