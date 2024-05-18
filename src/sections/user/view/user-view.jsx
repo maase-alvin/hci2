@@ -29,7 +29,7 @@ import { emptyRows, applyFilter, getComparator } from '../utils';
 
 export default function UserPage() {
   const [page, setPage] = useState(0);
-  const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+  
 
   const [order, setOrder] = useState('asc');
 
@@ -59,6 +59,7 @@ export default function UserPage() {
 
   useEffect(() => {
     const fetchData = async () => {
+      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
       try {
         const response = await axios.get(`${apiBaseUrl}/v1/users`);
         setUsers(response.data); 

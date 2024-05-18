@@ -35,7 +35,7 @@ import { emptyRows, applyFilter, getComparator } from '../user/utils';
 
 export default function NotificationPage() {
   const [page, setPage] = useState(0);
-  const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+
 
   const [order, setOrder] = useState('asc');
 
@@ -70,6 +70,7 @@ export default function NotificationPage() {
 
   useEffect(() => {
     const fetchData = async () => {
+      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
       try {
         const response = await axios.get(`${apiBaseUrl}/v1/notifications`);
         setSetNotifications(response.data); 
@@ -95,6 +96,7 @@ export default function NotificationPage() {
     setSelectedAction(event.target.value);
   };
   const sendAction = async () => {
+    const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
     try {
       
       const updatedNotificationInfo = {
@@ -157,6 +159,7 @@ export default function NotificationPage() {
   };
 
   const handleDelete = async (event, notificationId) => {
+    const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
     console.log('handleDelete is being called'); 
     try {      
       const response = await axios.delete(`${apiBaseUrl}/v1/notifications/${notificationId}`);
